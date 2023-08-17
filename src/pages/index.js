@@ -5,12 +5,19 @@ import Logo from "@/components/Logo";
 
 import { pokemonReducer } from "@/reducers/pokemons";
 import { Provider } from "react-redux";
-import { legacy_createStore as createStore } from "redux";
+import {
+  applyMiddleware,
+  compose,
+  legacy_createStore as createStore,
+} from "redux";
+import { logger } from "@/middlewares";
 
 const inter = Inter({ subsets: ["latin"] });
 
+const composeEnhancer = compose(applyMiddleware(logger));
+
 export default function Home() {
-  const store = createStore(pokemonReducer);
+  const store = createStore(pokemonReducer, composeEnhancer);
   return (
     <Provider store={store}>
       <main
