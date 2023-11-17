@@ -1,14 +1,25 @@
-export default function PockeCard({ name }) {
+export default function PockeCard({
+  name,
+  image,
+  abilities,
+  onClick,
+  favorite,
+}) {
   return (
-    <div className="m-8 bg-slate-200 text-black w-52 h-48 rounded-md flex flex-col justify-between p-2">
-      <div className="flex items-center justify-around">
-        <p>{name}</p>
-        <p className="text-3xl text-yellow-500">+</p>
+    <div className=" bg-slate-200 text-black w-56 h-52 rounded-md flex flex-col items-center pt-3 relative">
+      <div className="flex items-center gap-8 font-semibold">
+        <p>{name.charAt(0).toUpperCase() + name.slice(1)}</p>
+        <p
+          className={`text-3xl ${
+            favorite ? "text-red-500" : "text-yellow-500"
+          } cursor-pointer`}
+          onClick={onClick}
+        >
+          {favorite ? "/" : "+"}
+        </p>
       </div>
-      <img
-        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
-        alt="pokemon"
-      />
+      <img src={image} alt={name} className="w-36" />
+      <p className="absolute bottom-1 left-6">{abilities}</p>
     </div>
   );
 }

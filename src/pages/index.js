@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <Provider store={store}>
       <main
-        className={`flex min-h-screen flex-col items-center p-24 pt-12 ${inter.className}`}
+        className={`flex min-h-screen flex-col items-center p-16 pt-12 ${inter.className}`}
       >
         <Logo />
         <Searcher />
